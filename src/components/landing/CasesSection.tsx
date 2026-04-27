@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
-import { caseGridContainer, caseGridItem, legacyCases } from "../../data/landing";
+import { useLocale } from "../../context/LocaleContext";
+import { caseGridContainer, caseGridItem, directionIcons } from "../../data/landing";
 import { BentoCard } from "../BentoCard";
 
 export function CasesSection() {
+  const { t } = useLocale();
+
   return (
     <motion.section
       id="cases"
@@ -11,17 +14,17 @@ export function CasesSection() {
       whileInView="show"
       viewport={{ once: true, amount: 0.1, margin: "0px 0px -80px 0px" }}
       variants={caseGridContainer}
-      aria-label="Направления"
+      aria-label={t.directions.title}
     >
-      <h2 className="font-display text-center text-xs font-bold uppercase tracking-[0.2em] text-zinc-500">
-        Направления
+      <h2 className="font-display text-center text-xs font-bold uppercase tracking-[0.2em] text-ink-muted">
+        {t.directions.kicker}
       </h2>
-      <p className="font-display mx-auto mt-2 max-w-xl text-balance text-center text-lg font-bold text-zinc-950 sm:text-xl">
-        Где агенты дают максимальный эффект
+      <p className="font-display mx-auto mt-2 max-w-xl text-balance text-center text-lg font-bold text-ink sm:text-xl">
+        {t.directions.title}
       </p>
       <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-4">
-        {legacyCases.map((item) => {
-          const Icon = item.icon;
+        {t.directions.items.map((item, index) => {
+          const Icon = directionIcons[index];
           return (
             <motion.div
               key={item.title}
@@ -37,15 +40,15 @@ export function CasesSection() {
                   <span className="inline-flex rounded-xl bg-[#ff5733]/10 p-3 text-[#ff5733] ring-1 ring-[#ff5733]/15">
                     <Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden />
                   </span>
-                  <span className="font-display rounded-full bg-white/50 px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-wide text-zinc-600 ring-1 ring-black/[0.04] backdrop-blur-sm">
+                  <span className="font-display rounded-full bg-[color:var(--panel-bg)] px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-wide text-ink-muted ring-1 ring-[color:var(--card-border)]">
                     {item.tag}
                   </span>
                 </div>
-                <h3 className="font-display text-lg font-bold text-zinc-950">{item.title}</h3>
-                <p className="font-display mt-2 flex-1 text-sm leading-relaxed text-zinc-600">
+                <h3 className="font-display text-lg font-bold text-ink">{item.title}</h3>
+                <p className="font-display mt-2 flex-1 text-sm leading-relaxed text-ink-muted">
                   {item.description}
                 </p>
-                <ul className="mt-5 space-y-2 border-t border-white/50 pt-5 font-display text-xs text-zinc-600">
+                <ul className="mt-5 space-y-2 border-t border-[color:var(--card-border)] pt-5 font-display text-xs text-ink-muted">
                   {item.bullets.map((b) => (
                     <li key={b} className="flex gap-2">
                       <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#ff5733]/90" />
