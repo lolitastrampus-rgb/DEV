@@ -1,0 +1,391 @@
+@import "tailwindcss";
+
+@theme {
+  /* SF Pro stack: нативно на Apple; Inter — запасной гротеск */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Inter", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui,
+    sans-serif;
+  /* Ultra orange — кислотно-оранжевый акцент */
+  --color-ultra: #ff5a1f;
+  --color-ultra-deep: #e84610;
+  --ultra-glow: rgba(255, 90, 31, 0.55);
+  --ultra-glow-soft: rgba(255, 120, 60, 0.35);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply m-0 min-h-screen antialiased;
+  font-family: var(--font-sans);
+  background-color: #03030a;
+  color: #f4f4f5;
+}
+
+/* Aurora mesh: full-viewport, soft purple / midnight blue / warm orange «fog» */
+.vision-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: #03030a;
+}
+
+.aurora-base {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 120% 100% at 50% 100%,
+    #0a1020 0%,
+    #03030a 45%,
+    #020208 100%
+  );
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Deep purple */
+.aurora-blob--purple {
+  width: min(110vmax, 1400px);
+  height: min(110vmax, 1400px);
+  left: -25%;
+  top: -20%;
+  background: radial-gradient(
+    circle at 45% 45%,
+    rgba(88, 28, 135, 0.42) 0%,
+    rgba(67, 20, 102, 0.2) 38%,
+    transparent 68%
+  );
+  filter: blur(90px);
+  opacity: 0.85;
+  animation: aurora-drift-a 52s ease-in-out infinite;
+}
+
+/* Midnight blue */
+.aurora-blob--blue {
+  width: min(100vmax, 1200px);
+  height: min(100vmax, 1200px);
+  right: -22%;
+  bottom: -18%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(30, 64, 175, 0.45) 0%,
+    rgba(15, 23, 42, 0.35) 42%,
+    transparent 70%
+  );
+  filter: blur(100px);
+  opacity: 0.75;
+  animation: aurora-drift-b 48s ease-in-out infinite;
+}
+
+/* Warm low-saturation orange */
+.aurora-blob--amber {
+  width: min(85vmax, 1000px);
+  height: min(85vmax, 1000px);
+  left: 35%;
+  top: 25%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(180, 90, 40, 0.22) 0%,
+    rgba(120, 55, 25, 0.1) 45%,
+    transparent 65%
+  );
+  filter: blur(85px);
+  opacity: 0.65;
+  animation: aurora-drift-c 58s ease-in-out infinite;
+}
+
+/* Secondary purple/violet drift (depth) */
+.aurora-blob--violet {
+  width: min(70vmax, 900px);
+  height: min(70vmax, 900px);
+  right: 10%;
+  top: -8%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(109, 40, 217, 0.28) 0%,
+    rgba(59, 7, 100, 0.12) 50%,
+    transparent 72%
+  );
+  filter: blur(75px);
+  opacity: 0.55;
+  animation: aurora-drift-d 44s ease-in-out infinite reverse;
+}
+
+@keyframes aurora-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(4%, 3%) scale(1.04);
+  }
+  50% {
+    transform: translate(2%, -4%) scale(0.98);
+  }
+  75% {
+    transform: translate(-3%, 2%) scale(1.02);
+  }
+}
+
+@keyframes aurora-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-5%, -3%) scale(1.06);
+  }
+  66% {
+    transform: translate(3%, 5%) scale(0.97);
+  }
+}
+
+@keyframes aurora-drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  20% {
+    transform: translate(-6%, 4%) scale(1.05);
+  }
+  55% {
+    transform: translate(5%, -5%) scale(0.96);
+  }
+  80% {
+    transform: translate(-2%, 2%) scale(1.03);
+  }
+}
+
+@keyframes aurora-drift-d {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(5%, 6%) scale(1.08);
+  }
+  70% {
+    transform: translate(-4%, -3%) scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob {
+    animation: none !important;
+  }
+}
+
+/* Контраст текста на aurora: чуть ярче вторичный текст + лёгкая тень у крупных заголовков */
+.app-chrome .text-zinc-400,
+header nav a.text-zinc-400 {
+  color: #d4d4d8;
+}
+.app-chrome .text-zinc-500 {
+  color: #a1a1aa;
+}
+.app-chrome section h1,
+.app-chrome section h2 {
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* visionOS-like glass */
+.vision-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* вложенная панель / «вырезанный» трек */
+.vision-glass-inset {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* vibrancy: лёгкий градиент в тексте, как от подложки за стеклом */
+.text-vibrancy {
+  background: linear-gradient(
+    125deg,
+    #ffffff 0%,
+    rgba(200, 220, 255, 0.85) 45%,
+    rgba(255, 210, 180, 0.75) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-vibrancy-muted {
+  background: linear-gradient(
+    125deg,
+    #9ca3af 0%,
+    #6b7fd6 50%,
+    #c4a07a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.9;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Нав + CTA: логотип в «tech» стиле */
+.logo-brand {
+  font-family: var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Solid Ultra CTA + внешнее свечение */
+.btn-ultra {
+  background: linear-gradient(180deg, #ff6b35 0%, var(--color-ultra) 45%, var(--color-ultra-deep) 100%);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 4px 20px var(--ultra-glow),
+    0 0 40px var(--ultra-glow-soft),
+    0 0 80px rgba(255, 90, 31, 0.2);
+  transition: box-shadow 0.25s ease, filter 0.2s ease;
+}
+.btn-ultra:hover {
+  filter: brightness(1.06);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.24),
+    0 4px 28px var(--ultra-glow),
+    0 0 56px var(--ultra-glow-soft),
+    0 0 100px rgba(255, 90, 31, 0.28);
+}
+
+/* Outline glass (второй CTA) */
+.btn-glass-outline {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fafafa;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.btn-glass-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.06);
+}
+
+/* Core Agent Capabilities: фон, оранжевый ↔ deep blue */
+.core-capabilities-ambient {
+  position: absolute;
+  inset: -1.5rem -2.5rem;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 1.75rem;
+  overflow: visible;
+}
+
+.core-capabilities-ambient__layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  filter: blur(64px);
+  will-change: opacity, transform;
+}
+
+.core-capabilities-ambient__layer--orange {
+  background: radial-gradient(
+    ellipse 65% 55% at 15% 35%,
+    rgba(255, 100, 40, 0.45) 0%,
+    rgba(255, 90, 31, 0.12) 45%,
+    transparent 70%
+  );
+  animation: core-ambient-morph 10s ease-in-out infinite;
+}
+
+.core-capabilities-ambient__layer--blue {
+  background: radial-gradient(
+    ellipse 70% 60% at 85% 65%,
+    rgba(30, 64, 175, 0.5) 0%,
+    rgba(37, 99, 235, 0.12) 45%,
+    transparent 72%
+  );
+  animation: core-ambient-morph 10s ease-in-out infinite reverse;
+}
+
+@keyframes core-ambient-morph {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.95) translate(0, 0);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.08) translate(2%, -2%);
+  }
+}
+
+/* «Сканер»: полоса света по карточке */
+.core-card-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.core-card-scan__sheen {
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.14) 50%,
+    rgba(200, 220, 255, 0.1) 52%,
+    rgba(255, 255, 255, 0) 70%,
+    transparent 100%
+  );
+  transform: rotate(12deg) translateX(0);
+  mix-blend-mode: overlay;
+}
+
+@keyframes core-sheen-pass {
+  0% {
+    transform: rotate(12deg) translateX(-40%) translateY(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.85;
+  }
+  50% {
+    transform: rotate(12deg) translateX(85%) translateY(5%);
+    opacity: 0.6;
+  }
+  92% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: rotate(12deg) translateX(220%) translateY(0);
+    opacity: 0;
+  }
+}
