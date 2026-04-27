@@ -20,7 +20,7 @@ export function BentoCard({ children, className, id, emphasis }: Props) {
         "transition-[box-shadow,transform,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
         "hover:border-[color:var(--card-border)] hover:shadow-[0_1px_0_rgba(255,255,255,0.75)_inset,0_16px_44px_rgba(0,0,0,0.08)]",
         emphasis &&
-          "border-orange-200/80 bg-gradient-to-br from-[color:var(--card-bg)] via-white/90 to-orange-50/45 ring-[#ff5733]/12",
+          "border-orange-200/70 bg-gradient-to-br from-[color:var(--card-bg)] via-[color:var(--card-bg)] to-[#ff5733]/12 ring-[#ff5733]/12 [html[data-theme=dark]_&]:border-orange-500/25 [html[data-theme=dark]_&]:to-[#ff5733]/18",
         className
       )}
     >
