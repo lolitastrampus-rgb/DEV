@@ -86,14 +86,19 @@ export function ActivityRings({ variant, className, surface = "dark" }: Props) {
       <div
         className={cn(
           "pointer-events-none absolute inset-0 flex items-center justify-center text-center",
-          surface === "light" ? "text-stone-800" : "text-white"
+          surface === "light" ? "text-zinc-900" : "text-white"
         )}
       >
         <span
           className="text-3xl font-bold tabular-nums tracking-tight"
-          style={{
-            textShadow: "0 0 24px rgba(255,255,255,0.2), 0 0 2px rgba(255,255,255,0.4)",
-          }}
+          style={
+            surface === "light"
+              ? undefined
+              : {
+                  textShadow:
+                    "0 0 24px rgba(255,255,255,0.2), 0 0 2px rgba(255,255,255,0.4)",
+                }
+          }
         >
           {center}
         </span>
