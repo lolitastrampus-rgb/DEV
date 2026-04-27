@@ -1,17 +1,6 @@
-import {
-  LineChart,
-  Link2,
-  ShieldCheck,
-  ShoppingBag,
-  Users,
-  Workflow,
-  type LucideIcon,
-} from "lucide-react";
+import { LineChart, ShoppingBag, Users, type LucideIcon } from "lucide-react";
 
-/** Иконки модулей — порядок совпадает с `messages.modules.cards` */
-export const moduleIcons: LucideIcon[] = [Workflow, LineChart, Link2, ShieldCheck];
-
-/** Иконки направлений бизнеса — порядок совпадает с `messages.directions.items` */
+/** Иконки отраслевых кейсов — порядок совпадает с `messages.directions.items` */
 export const directionIcons: LucideIcon[] = [ShoppingBag, LineChart, Users];
 
 export const moduleGridContainer = {

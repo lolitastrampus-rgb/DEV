@@ -6,17 +6,17 @@ import {
   XAxis,
 } from "recharts";
 
-const nutritionData = [
-  { d: "Пн", v: 1840 },
-  { d: "Вт", v: 2100 },
-  { d: "Ср", v: 1920 },
-  { d: "Чт", v: 2010 },
-  { d: "Пт", v: 1780 },
-  { d: "Сб", v: 2200 },
-  { d: "Вс", v: 1950 },
+const seriesAData = [
+  { d: "Пн", v: 184 },
+  { d: "Вт", v: 210 },
+  { d: "Ср", v: 192 },
+  { d: "Чт", v: 201 },
+  { d: "Пт", v: 178 },
+  { d: "Сб", v: 220 },
+  { d: "Вс", v: 195 },
 ];
 
-const workoutData = [
+const seriesBData = [
   { d: "Пн", v: 42 },
   { d: "Вт", v: 65 },
   { d: "Ср", v: 38 },
@@ -27,17 +27,16 @@ const workoutData = [
 ];
 
 type Props = {
-  variant: "nutrition" | "workout";
-  /** light: карточка; vision: тёмный glass / visionOS */
+  variant: "seriesA" | "seriesB";
   colorScheme?: "light" | "dark" | "vision";
 };
 
 export function MiniChart({ variant, colorScheme = "vision" }: Props) {
   const isVision = colorScheme === "vision" || colorScheme === "dark";
-  const data = variant === "nutrition" ? nutritionData : workoutData;
+  const data = variant === "seriesA" ? seriesAData : seriesBData;
   const color =
-    variant === "nutrition" ? (isVision ? "#34d399" : "#16a34a") : isVision ? "#22d3ee" : "#0284c7";
-  const label = variant === "nutrition" ? "ккал" : "нагрузка";
+    variant === "seriesA" ? (isVision ? "#818cf8" : "#6366f1") : isVision ? "#a78bfa" : "#7c3aed";
+  const label = variant === "seriesA" ? "обр." : "ед.";
   const idSuffix = `${variant}-${colorScheme}`;
 
   const tick = isVision ? "rgba(161, 161, 170, 0.7)" : "#a8a29e";
@@ -83,7 +82,7 @@ export function MiniChart({ variant, colorScheme = "vision" }: Props) {
             itemStyle={{ color: tipText }}
             formatter={(v) => [
               `${v ?? "—"} ${label}`,
-              variant === "nutrition" ? "План" : "Сессия",
+              variant === "seriesA" ? "Входящие" : "Обработано",
             ]}
           />
           <Area
@@ -93,11 +92,7 @@ export function MiniChart({ variant, colorScheme = "vision" }: Props) {
             strokeWidth={isVision ? 2.5 : 2}
             fill={`url(#g-${idSuffix})`}
             dot={false}
-            activeDot={
-              isVision
-                ? { r: 4, fill: color, stroke: "rgba(255,255,255,0.4)", strokeWidth: 1 }
-                : { r: 3, fill: color }
-            }
+            activeDot={{ r: 4, strokeWidth: 0 }}
             filter={isVision ? `url(#glow-${idSuffix})` : undefined}
           />
         </AreaChart>

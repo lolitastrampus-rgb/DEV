@@ -19,10 +19,10 @@ function systemPrefersDark(): boolean {
 }
 
 function readInitialPreference(): ThemePreference {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   const s = window.localStorage.getItem(STORAGE_KEY);
   if (s === "light" || s === "dark" || s === "system") return s;
-  return "light";
+  return "dark";
 }
 
 function applyResolved(resolved: Resolved) {

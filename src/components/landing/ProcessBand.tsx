@@ -14,7 +14,7 @@ export function ProcessBand() {
           {t.process.steps.map((step, i) => (
             <li key={step.title} className="flex gap-3">
               <span
-                className="font-display flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ff5733]/12 text-xs font-bold text-[#c2410c]"
+                className="font-display flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--color-ultra)_22%,transparent)] text-xs font-bold text-[color:var(--color-ultra-deep)]"
                 aria-hidden
               >
                 {i + 1}

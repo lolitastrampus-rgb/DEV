@@ -27,7 +27,7 @@ export function TestimonialsSection() {
           <motion.div key={item.name} variants={moduleGridItem} whileHover={{ y: -3 }}>
             <BentoCard className="flex h-full flex-col">
               {item.metric ? (
-                <p className="font-display w-fit rounded-full bg-[#ff5733]/10 px-3 py-1 text-xs font-semibold text-[#c2410c]">
+                <p className="font-display w-fit rounded-full bg-[color-mix(in_srgb,var(--color-ultra)_18%,transparent)] px-3 py-1 text-xs font-semibold text-[color:var(--color-ultra-deep)]">
                   {item.metric}
                 </p>
               ) : null}

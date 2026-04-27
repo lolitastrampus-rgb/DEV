@@ -37,7 +37,7 @@ export function CasesSection() {
             >
               <BentoCard className="flex h-full flex-col">
                 <div className="mb-4 flex items-start justify-between gap-3">
-                  <span className="inline-flex rounded-xl bg-[#ff5733]/10 p-3 text-[#ff5733] ring-1 ring-[#ff5733]/15">
+                  <span className="inline-flex rounded-xl bg-[color-mix(in_srgb,var(--color-ultra)_16%,transparent)] p-3 text-[color:var(--color-ultra)] ring-1 ring-[color-mix(in_srgb,var(--color-ultra)_32%,transparent)]">
                     <Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden />
                   </span>
                   <span className="font-display rounded-full bg-[color:var(--panel-bg)] px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-wide text-ink-muted ring-1 ring-[color:var(--card-border)]">
@@ -51,7 +51,7 @@ export function CasesSection() {
                 <ul className="mt-5 space-y-2 border-t border-[color:var(--card-border)] pt-5 font-display text-xs text-ink-muted">
                   {item.bullets.map((b) => (
                     <li key={b} className="flex gap-2">
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#ff5733]/90" />
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-ultra)]" />
                       <span>{b}</span>
                     </li>
                   ))}

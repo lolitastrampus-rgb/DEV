@@ -20,9 +20,10 @@ type Ctx = {
 const LocaleContext = createContext<Ctx | null>(null);
 
 function readInitialLocale(): Locale {
-  if (typeof window === "undefined") return "ru";
-  const s = window.localStorage.getItem(STORAGE_KEY);
-  if (s === "en" || s === "ru") return s;
+  
+  
+  
+  
   return "ru";
 }
 

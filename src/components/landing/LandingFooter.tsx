@@ -2,19 +2,48 @@ import { useLocale } from "../../context/LocaleContext";
 import { NAV_HREF } from "../../data/siteNav";
 import { mailtoHref } from "../../i18n";
 
+const WHATSAPP_URL = "https://wa.me/79001234567";
+
 export function LandingFooter() {
   const { t, locale } = useLocale();
 
   return (
-    <footer className="site-footer relative z-10 mt-auto">
+    <footer className="site-footer relative z-10 mt-auto border-t border-[color:var(--card-border)] bg-[#000000]/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between md:gap-12">
         <div>
           <a href="#" className="logo-brand text-sm font-bold text-ink">
-            AgentLab
+            AI Agent Labs
           </a>
-          <p className="font-display mt-3 max-w-xs text-sm leading-relaxed text-ink-muted">
+          <p className="font-display mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
             {t.footer.tagline}
           </p>
+          <a
+            href={mailtoHref(locale, true)}
+            className="btn-ultra font-display mt-6 inline-flex min-h-11 items-center justify-center rounded-full px-8 py-2.5 text-sm font-semibold"
+          >
+            {t.footer.auditCta}
+          </a>
+          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
+            <a
+              href={t.cta.telegramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-display text-sm font-medium text-[color:var(--color-ultra)] underline-offset-2 hover:underline"
+            >
+              {t.footer.telegram}
+            </a>
+            <span className="text-ink-muted" aria-hidden>
+              ·
+            </span>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-display text-sm font-medium text-[color:var(--color-ultra)] underline-offset-2 hover:underline"
+            >
+              {t.footer.whatsapp}
+            </a>
+          </div>
         </div>
 
         <nav aria-label={t.footer.sections} className="flex flex-col gap-3">
@@ -22,22 +51,28 @@ export function LandingFooter() {
             {t.footer.sections}
           </p>
           <a
-            href={NAV_HREF.trainings}
-            className="font-display text-sm font-medium text-ink transition-colors hover:text-[#ff5733]"
-          >
-            {t.footerNav.trainings}
-          </a>
-          <a
-            href={NAV_HREF.nutrition}
-            className="font-display text-sm font-medium text-ink transition-colors hover:text-[#ff5733]"
-          >
-            {t.footerNav.nutrition}
-          </a>
-          <a
             href={NAV_HREF.modules}
-            className="font-display text-sm font-medium text-ink transition-colors hover:text-[#ff5733]"
+            className="font-display text-sm font-medium text-ink transition-colors hover:text-[color:var(--color-ultra)]"
           >
-            {t.footerNav.aboutAgents}
+            {t.footerNav.modules}
+          </a>
+          <a
+            href={NAV_HREF.process}
+            className="font-display text-sm font-medium text-ink transition-colors hover:text-[color:var(--color-ultra)]"
+          >
+            {t.footerNav.process}
+          </a>
+          <a
+            href={NAV_HREF.reviews}
+            className="font-display text-sm font-medium text-ink transition-colors hover:text-[color:var(--color-ultra)]"
+          >
+            {t.footerNav.reviews}
+          </a>
+          <a
+            href={NAV_HREF.cases}
+            className="font-display text-sm font-medium text-ink transition-colors hover:text-[color:var(--color-ultra)]"
+          >
+            {t.footerNav.cases}
           </a>
         </nav>
 
@@ -53,16 +88,14 @@ export function LandingFooter() {
           </a>
           <a
             href={mailtoHref(locale)}
-            className="font-display text-sm font-medium text-[#ff5733] hover:underline"
+            className="font-display text-sm font-medium text-[color:var(--color-ultra)] hover:underline"
           >
             {t.footer.contact}
           </a>
         </div>
       </div>
       <div className="border-t border-[color:var(--card-border)] py-4 text-center">
-        <p className="font-display text-xs text-ink-muted">
-          © {new Date().getFullYear()} AgentLab. {t.footer.copyright}
-        </p>
+        <p className="font-display text-xs text-ink-muted">© {t.footer.copyright}</p>
       </div>
     </footer>
   );

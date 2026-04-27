@@ -10,8 +10,9 @@ export function getMessages(locale: Locale): Messages {
   return byLocale[locale];
 }
 
-export function mailtoHref(locale: Locale): string {
-  const subject = getMessages(locale).mailtoSubject;
+export function mailtoHref(locale: Locale, audit?: boolean): string {
+  const m = getMessages(locale);
+  const subject = audit ? m.mailtoAuditSubject : m.mailtoSubject;
   const enc = encodeURIComponent(subject);
   return `mailto:hello@agentlab.dev?subject=${enc}`;
 }

@@ -2,7 +2,7 @@ export type Locale = "ru" | "en";
 
 export type ThemePreference = "light" | "dark" | "system";
 
-export type NavId = "modules" | "trainings" | "nutrition" | "reviews" | "cta";
+export type NavId = "modules" | "process" | "reviews" | "cases" | "cta";
 
 export type Messages = {
   meta: { title: string };
@@ -15,11 +15,15 @@ export type Messages = {
     terms: string;
     contact: string;
     copyright: string;
+    auditCta: string;
+    telegram: string;
+    whatsapp: string;
   };
   footerNav: {
-    trainings: string;
-    nutrition: string;
-    aboutAgents: string;
+    modules: string;
+    process: string;
+    reviews: string;
+    cases: string;
   };
   header: { cta: string };
   theme: {
@@ -31,9 +35,8 @@ export type Messages = {
   lang: { ru: string; en: string; label: string };
   hero: {
     badge: string;
-    line1: string;
-    line2Gradient: string;
-    lead: string;
+    title: string;
+    subtitle: string;
     body: string;
     ctaPrimary: string;
     ctaDemo: string;
@@ -44,7 +47,6 @@ export type Messages = {
     demoTitle: string;
     demoHint: string;
   };
-  modules: { kicker: string; title: string; cards: { title: string; description: string }[] };
   result: {
     kicker: string;
     title: string;
@@ -52,31 +54,10 @@ export type Messages = {
     p2: string;
     bullets: string[];
   };
-  trainings: {
-    kicker: string;
-    title: string;
-    programs: {
-      title: string;
-      subtitle: string;
-      description: string;
-      bullets: string[];
-    }[];
-  };
   reviews: {
     kicker: string;
     title: string;
     items: { name: string; role: string; quote: string; metric?: string }[];
-  };
-  menu: {
-    aria: string;
-    kicker: string;
-    title: string;
-    p1: string;
-    p2: string;
-    bullets: string[];
-    rationTitle: string;
-    rationHint: string;
-    rationRows: { meal: string; dish: string; kcal: string; note: string }[];
   };
   directions: {
     kicker: string;
@@ -100,7 +81,13 @@ export type Messages = {
     title: string;
     body: string;
     button: string;
+    emailIntro: string;
     emailLine: string;
+    telegramKicker: string;
+    telegramLead: string;
+    telegramCta: string;
+    telegramUrl: string;
   };
   mailtoSubject: string;
+  mailtoAuditSubject: string;
 };

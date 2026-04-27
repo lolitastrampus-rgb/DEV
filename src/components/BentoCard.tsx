@@ -13,14 +13,15 @@ export function BentoCard({ children, className, id, emphasis }: Props) {
     <div
       id={id}
       className={cn(
-        "rounded-3xl border p-6 shadow-[0_1px_0_rgba(255,255,255,0.65)_inset,0_8px_30px_rgba(0,0,0,0.05)]",
+        "rounded-3xl border p-6",
         "border-[color:var(--card-border)] bg-[color:var(--card-bg)]",
-        "backdrop-blur-xl backdrop-saturate-150",
-        "ring-1 ring-zinc-900/[0.03]",
+        "backdrop-blur-2xl backdrop-saturate-150",
+        "shadow-[0_8px_32px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.06)]",
+        "ring-1 ring-[color-mix(in_srgb,var(--card-border)_80%,transparent)]",
         "transition-[box-shadow,transform,border-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
-        "hover:border-[color:var(--card-border)] hover:shadow-[0_1px_0_rgba(255,255,255,0.75)_inset,0_16px_44px_rgba(0,0,0,0.08)]",
+        "hover:border-[color:var(--card-border)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)]",
         emphasis &&
-          "border-orange-200/70 bg-gradient-to-br from-[color:var(--card-bg)] via-[color:var(--card-bg)] to-[#ff5733]/12 ring-[#ff5733]/12 [html[data-theme=dark]_&]:border-orange-500/25 [html[data-theme=dark]_&]:to-[#ff5733]/18",
+          "border-[color-mix(in_srgb,var(--color-ultra)_45%,var(--card-border))] bg-gradient-to-br from-[color:var(--card-bg)] via-[color:var(--card-bg)] to-[color-mix(in_srgb,var(--color-ultra)_12%,transparent)] ring-[color-mix(in_srgb,var(--color-ultra)_35%,transparent)]",
         className
       )}
     >

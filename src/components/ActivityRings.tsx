@@ -55,27 +55,27 @@ function RingCircle({
 }
 
 type Props = {
-  variant: "nutrition" | "workout";
+  variant: "load" | "coverage";
   className?: string;
   surface?: "light" | "dark";
 };
 
 const presets: Record<Props["variant"], Ring[]> = {
-  nutrition: [
-    { progress: 0.78, color: "#34d399", glow: "rgba(52, 211, 153, 0.95)", size: 180, stroke: 14 },
-    { progress: 0.62, color: "#fb923c", glow: "rgba(251, 146, 60, 0.95)", size: 144, stroke: 12 },
-    { progress: 0.45, color: "#f87171", glow: "rgba(248, 113, 113, 0.95)", size: 108, stroke: 10 },
+  load: [
+    { progress: 0.78, color: "#818cf8", glow: "rgba(129, 140, 248, 0.95)", size: 180, stroke: 14 },
+    { progress: 0.62, color: "#a78bfa", glow: "rgba(167, 139, 250, 0.95)", size: 144, stroke: 12 },
+    { progress: 0.45, color: "#6366f1", glow: "rgba(99, 102, 241, 0.95)", size: 108, stroke: 10 },
   ],
-  workout: [
-    { progress: 0.92, color: "#22d3ee", glow: "rgba(34, 211, 238, 0.95)", size: 180, stroke: 14 },
-    { progress: 0.71, color: "#c084fc", glow: "rgba(192, 132, 252, 0.95)", size: 144, stroke: 12 },
-    { progress: 0.55, color: "#4ade80", glow: "rgba(74, 222, 128, 0.9)", size: 108, stroke: 10 },
+  coverage: [
+    { progress: 0.92, color: "#6366f1", glow: "rgba(99, 102, 241, 0.95)", size: 180, stroke: 14 },
+    { progress: 0.71, color: "#7c3aed", glow: "rgba(124, 58, 237, 0.95)", size: 144, stroke: 12 },
+    { progress: 0.55, color: "#4f46e5", glow: "rgba(79, 70, 229, 0.9)", size: 108, stroke: 10 },
   ],
 };
 
 export function ActivityRings({ variant, className, surface = "dark" }: Props) {
   const rings = presets[variant];
-  const center = variant === "nutrition" ? "78%" : "92%";
+  const center = variant === "load" ? "78%" : "92%";
   const trackClass = surface === "light" ? "stroke-stone-200" : "stroke-white/[0.12]";
 
   return (
@@ -89,19 +89,12 @@ export function ActivityRings({ variant, className, surface = "dark" }: Props) {
           surface === "light" ? "text-zinc-900" : "text-white"
         )}
       >
-        <span
-          className="text-3xl font-bold tabular-nums tracking-tight"
-          style={
-            surface === "light"
-              ? undefined
-              : {
-                  textShadow:
-                    "0 0 24px rgba(255,255,255,0.2), 0 0 2px rgba(255,255,255,0.4)",
-                }
-          }
-        >
-          {center}
-        </span>
+        <div>
+          <p className="text-2xl font-bold tabular-nums tracking-tight">{center}</p>
+          <p className="text-[0.65rem] font-medium uppercase tracking-wider text-white/50">
+            {variant === "load" ? "Нагрузка" : "Покрытие"}
+          </p>
+        </div>
       </div>
     </div>
   );

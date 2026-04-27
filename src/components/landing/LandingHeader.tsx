@@ -12,7 +12,7 @@ export function LandingHeader() {
         aria-label="Основная навигация"
       >
         <a href="#" className="logo-brand shrink-0 text-xs font-bold text-ink sm:text-sm md:text-base">
-          AgentLab
+          AI Agent Labs
         </a>
 
         <div className="hidden items-center gap-3 lg:gap-4 xl:flex">

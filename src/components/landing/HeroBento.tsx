@@ -12,16 +12,14 @@ export function HeroMainCard() {
       className="md:col-span-8 md:col-start-1 md:row-start-1 [scroll-margin-top:6rem] sm:[scroll-margin-top:7rem]"
     >
       <p className="font-display flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ink-muted">
-        <Sparkles className="h-3.5 w-3.5 text-[#ff5733]" aria-hidden />
+        <Sparkles className="h-3.5 w-3.5 text-[color:var(--color-ultra)]" aria-hidden />
         {t.hero.badge}
       </p>
-      <h1 className="font-display mt-5 text-balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl lg:text-[3.25rem]">
-        {t.hero.line1}
-        <br />
-        <span className="text-vibrancy">{t.hero.line2Gradient}</span>
+      <h1 className="font-display mt-5 text-balance text-3xl font-bold leading-[1.08] tracking-[-0.03em] text-ink sm:text-4xl lg:text-[2.75rem]">
+        {t.hero.title}
       </h1>
       <p className="font-display mt-5 max-w-2xl text-pretty text-lg font-semibold leading-snug text-ink sm:text-xl">
-        {t.hero.lead}
+        {t.hero.subtitle}
       </p>
       <p className="font-display mt-4 max-w-xl text-pretty text-sm leading-relaxed text-ink-muted sm:text-base">
         {t.hero.body}
@@ -34,7 +32,7 @@ export function HeroMainCard() {
           {t.hero.ctaPrimary}
         </a>
         <a
-          href="#demo"
+          href="#cases"
           className="btn-glass-outline font-display inline-flex min-h-12 items-center justify-center rounded-full px-8 py-3 text-sm font-semibold"
         >
           {t.hero.ctaDemo}
@@ -66,7 +64,7 @@ export function HeroSideCard() {
         <p className="font-display mt-2 text-sm font-semibold text-ink">{t.hero.demoTitle}</p>
         <p className="font-display mt-1 text-xs text-ink-muted">{t.hero.demoHint}</p>
         <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[color:var(--card-border)]">
-          <div className="h-full w-3/4 rounded-full bg-[#ff5733]" aria-hidden />
+          <div className="h-full w-3/4 rounded-full bg-[color:var(--color-ultra)]" aria-hidden />
         </div>
       </div>
     </BentoCard>

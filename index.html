@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AgentLab — ИИ-агенты для тренировок и питания</title>
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#ffffff" />
+    <title>AI Agent Labs — автономные ИИ-агенты для бизнеса</title>
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#000000" />
     <script>
       (function () {
         try {
           var p = localStorage.getItem("agentlab-theme");
           var sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
           var resolved =
-            p === "dark" ? "dark" : p === "system" ? (sysDark ? "dark" : "light") : "light";
+            p === "dark" ? "dark" : p === "light" ? "light" : p === "system" ? (sysDark ? "dark" : "light") : "dark";
           document.documentElement.dataset.theme = resolved;
           document.documentElement.style.colorScheme = resolved;
         } catch (e) {}
@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
