@@ -34,7 +34,6 @@ export const en: Messages = {
   theme: {
     light: "Light",
     dark: "Dark",
-    system: "System",
     label: "Theme",
   },
   lang: { ru: "Ru", en: "En", label: "Language" },
@@ -133,14 +132,16 @@ export const en: Messages = {
     nextCta: "Book an audit",
   },
   cta: {
-    title: "Ready to deploy AI agents in sales and support?",
-    body: "Request a process audit and a pilot with clear economics.",
-    button: "Book an audit",
-    emailIntro: "Email",
-    emailLine: "or email us — we’ll reply with timeline and scope.",
-    telegramKicker: "Telegram",
-    telegramLead: "Quick contact: message us on Telegram to book a call and receive an audit checklist.",
-    telegramCta: "Open Telegram",
+    title: "Ready to delegate the grind to AI agents? Save 100+ hours a week on the pilot",
+    subtitle:
+      "Autonomous agents and LLM integrations replace repetitive work at scale: funnel efficiency, LTV and CAC signals. Describe your stack — we reply with a timeline and ROI band.",
+    inputLabel: "What should we automate first?",
+    inputPlaceholder: "e.g. sales pod, CRM, lead volume, first use case to ship…",
+    submit: "Run agent audit",
+    loadingLabel: "Preparing your request…",
+    successTitle: "You’re set",
+    successHint:
+      "Your mail app should open with a draft. If it doesn’t, email hello@agentlab.dev",
     telegramUrl: "https://t.me/aiagentlabs",
   },
   mailtoSubject: "Commercial inquiry — AI Agent Labs",

@@ -16,9 +16,7 @@ export function TestimonialsSection() {
       variants={moduleGridContainer}
       aria-label={t.reviews.title}
     >
-      <h2 className="font-display text-center text-xs font-bold uppercase tracking-[0.22em] text-ink-muted">
-        {t.reviews.kicker}
-      </h2>
+      <h2 className="font-display text-center text-xs font-bold uppercase tracking-[0.22em] text-ink-muted">{t.reviews.kicker}</h2>
       <p className="font-display mx-auto mt-2 max-w-xl text-balance text-center text-lg font-bold text-ink sm:text-xl">
         {t.reviews.title}
       </p>

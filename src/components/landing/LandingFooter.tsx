@@ -1,6 +1,7 @@
 import { useLocale } from "../../context/LocaleContext";
 import { NAV_HREF } from "../../data/siteNav";
 import { mailtoHref } from "../../i18n";
+import { Button } from "../Button";
 
 const WHATSAPP_URL = "https://wa.me/79001234567";
 
@@ -8,21 +9,22 @@ export function LandingFooter() {
   const { t, locale } = useLocale();
 
   return (
-    <footer className="site-footer relative z-10 mt-auto border-t border-[color:var(--card-border)] bg-[#000000]/95 backdrop-blur-xl">
+    <footer className="site-footer relative z-10 mt-auto border-t border-[color:var(--card-border)] backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between md:gap-12">
         <div>
-          <a href="#" className="logo-brand text-sm font-bold text-ink">
+          <a href="#top" className="logo-brand text-sm font-bold text-ink">
             AI Agent Labs
           </a>
           <p className="font-display mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
             {t.footer.tagline}
           </p>
-          <a
+          <Button
+            variant="primary"
             href={mailtoHref(locale, true)}
-            className="btn-ultra font-display mt-6 inline-flex min-h-11 items-center justify-center rounded-full px-8 py-2.5 text-sm font-semibold"
+            className="mt-6 min-h-11 px-8 py-2.5 text-sm"
           >
             {t.footer.auditCta}
-          </a>
+          </Button>
           <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
             <a
               href={t.cta.telegramUrl}

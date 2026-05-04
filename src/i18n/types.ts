@@ -1,6 +1,6 @@
 export type Locale = "ru" | "en";
 
-export type ThemePreference = "light" | "dark" | "system";
+export type ThemePreference = "light" | "dark";
 
 export type NavId = "modules" | "process" | "reviews" | "cases" | "cta";
 
@@ -29,7 +29,6 @@ export type Messages = {
   theme: {
     light: string;
     dark: string;
-    system: string;
     label: string;
   };
   lang: { ru: string; en: string; label: string };
@@ -79,13 +78,13 @@ export type Messages = {
   };
   cta: {
     title: string;
-    body: string;
-    button: string;
-    emailIntro: string;
-    emailLine: string;
-    telegramKicker: string;
-    telegramLead: string;
-    telegramCta: string;
+    subtitle: string;
+    inputLabel: string;
+    inputPlaceholder: string;
+    submit: string;
+    loadingLabel: string;
+    successTitle: string;
+    successHint: string;
     telegramUrl: string;
   };
   mailtoSubject: string;

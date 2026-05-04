@@ -1,9 +1,11 @@
+import { Button } from "../Button";
 import { useLocale } from "../../context/LocaleContext";
 import { NAV_HREF, NAV_ORDER } from "../../data/siteNav";
+import { mailtoHref } from "../../i18n";
 import { HeaderToolbar } from "./HeaderToolbar";
 
 export function LandingHeader() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-3 pt-3 sm:px-4 sm:pt-4">
@@ -11,7 +13,10 @@ export function LandingHeader() {
         className="vision-glass flex w-full max-w-6xl items-center justify-between gap-2 rounded-2xl px-3 py-3 sm:gap-3 sm:px-5"
         aria-label="Основная навигация"
       >
-        <a href="#" className="logo-brand shrink-0 text-xs font-bold text-ink sm:text-sm md:text-base">
+        <a
+          href="#top"
+          className="logo-brand shrink-0 text-xs font-bold text-ink sm:text-sm md:text-base"
+        >
           AI Agent Labs
         </a>
 
@@ -29,12 +34,13 @@ export function LandingHeader() {
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <HeaderToolbar />
-          <a
-            href={NAV_HREF.cta}
-            className="btn-ultra font-display inline-flex items-center justify-center rounded-full px-3 py-2 text-xs font-semibold sm:px-5 sm:text-sm"
+          <Button
+            variant="primary"
+            href={mailtoHref(locale, true)}
+            className="px-3 py-2 text-xs sm:px-5 sm:text-sm"
           >
             {t.header.cta}
-          </a>
+          </Button>
         </div>
       </nav>
     </header>

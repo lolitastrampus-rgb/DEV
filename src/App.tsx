@@ -12,12 +12,15 @@ import { TestimonialsSection } from "./components/landing/TestimonialsSection";
 
 export default function App() {
   return (
-    <div className="dark bg-[#000000] text-[#FFFFFF] relative flex min-h-screen flex-col overflow-x-hidden">
+    <div
+      id="top"
+      className="relative flex min-h-screen flex-col overflow-x-hidden bg-[color:var(--color-surface)] text-[color:var(--color-ink)]"
+    >
       <DocumentTitle />
       <AuroraBackdrop />
       <LandingHeader />
 
-      <main className="app-chrome relative z-10 flex-1 px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32">
+      <main className="app-chrome relative z-10 flex-1 bg-[color:var(--color-surface)] px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32">
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:auto-rows-min md:grid-cols-12">
           <HeroMainCard />
           <HeroSideCard />

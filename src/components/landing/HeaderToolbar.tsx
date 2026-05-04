@@ -1,4 +1,4 @@
-import { Monitor, Moon, Sun } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import { useLocale } from "../../context/LocaleContext";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -9,14 +9,11 @@ export function HeaderToolbar() {
   const themeIcon =
     preference === "light" ? (
       <Sun className="h-4 w-4" aria-hidden />
-    ) : preference === "dark" ? (
-      <Moon className="h-4 w-4" aria-hidden />
     ) : (
-      <Monitor className="h-4 w-4" aria-hidden />
+      <Moon className="h-4 w-4" aria-hidden />
     );
 
-  const themeLabel =
-    preference === "light" ? t.theme.light : preference === "dark" ? t.theme.dark : t.theme.system;
+  const themeLabel = preference === "light" ? t.theme.light : t.theme.dark;
 
   return (
     <div className="flex items-center gap-1.5 sm:gap-2">

@@ -11,10 +11,24 @@
         try {
           var p = localStorage.getItem("agentlab-theme");
           var sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          /* Два режима: light | dark; «system» в старой версии один раз переводится в явный выбор. */
           var resolved =
-            p === "dark" ? "dark" : p === "light" ? "light" : p === "system" ? (sysDark ? "dark" : "light") : "dark";
-          document.documentElement.dataset.theme = resolved;
-          document.documentElement.style.colorScheme = resolved;
+            p === "dark"
+              ? "dark"
+              : p === "light"
+                ? "light"
+                : p === "system"
+                  ? (sysDark ? "dark" : "light")
+                  : "dark";
+          if (p === "system") {
+            localStorage.setItem("agentlab-theme", resolved);
+          }
+          var root = document.documentElement;
+          root.dataset.theme = resolved;
+          root.style.colorScheme = resolved;
+          root.classList.toggle("dark", resolved === "dark");
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", resolved === "dark" ? "#000000" : "#ffffff");
         } catch (e) {}
       })();
     </script>

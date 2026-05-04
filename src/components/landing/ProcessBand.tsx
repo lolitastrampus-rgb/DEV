@@ -1,9 +1,10 @@
 import { useLocale } from "../../context/LocaleContext";
-import { NAV_HREF } from "../../data/siteNav";
+import { mailtoHref } from "../../i18n";
+import { Button } from "../Button";
 import { BentoCard } from "../BentoCard";
 
 export function ProcessBand() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   return (
     <>
@@ -33,12 +34,9 @@ export function ProcessBand() {
           {t.process.nextKicker}
         </p>
         <p className="font-display mt-3 text-xl font-bold text-ink sm:text-2xl">{t.process.nextTitle}</p>
-        <a
-          href={NAV_HREF.cta}
-          className="btn-ultra font-display mt-6 inline-flex w-fit items-center justify-center rounded-full px-7 py-2.5 text-sm font-semibold"
-        >
+        <Button variant="primary" href={mailtoHref(locale, true)} className="mt-6 w-fit px-7 py-2.5 text-sm">
           {t.process.nextCta}
-        </a>
+        </Button>
       </BentoCard>
     </>
   );

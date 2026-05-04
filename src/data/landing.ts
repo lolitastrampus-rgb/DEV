@@ -7,7 +7,7 @@ export const moduleGridContainer = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.04 },
+    transition: { staggerChildren: 0.06, delayChildren: 0.03 },
   },
 } as const;
 
@@ -16,7 +16,7 @@ export const moduleGridItem = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.26, ease: [0.22, 1, 0.36, 1] as const },
   },
 } as const;
 
@@ -24,7 +24,7 @@ export const caseGridContainer = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.06 },
+    transition: { staggerChildren: 0.07, delayChildren: 0.04 },
   },
 } as const;
 
@@ -33,6 +33,6 @@ export const caseGridItem = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.26, ease: [0.22, 1, 0.36, 1] as const },
   },
 } as const;

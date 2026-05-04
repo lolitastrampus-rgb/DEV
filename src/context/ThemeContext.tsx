@@ -1,12 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import type { ThemePreference } from "../i18n/types";
 
 const STORAGE_KEY = "agentlab-theme";
@@ -21,25 +13,29 @@ function systemPrefersDark(): boolean {
 function readInitialPreference(): ThemePreference {
   if (typeof window === "undefined") return "dark";
   const s = window.localStorage.getItem(STORAGE_KEY);
-  if (s === "light" || s === "dark" || s === "system") return s;
+  if (s === "light" || s === "dark") return s;
+  /* Миграция со старых сохранений с «system» */
+  if (s === "system") {
+    const next: ThemePreference = systemPrefersDark() ? "dark" : "light";
+    try {
+      window.localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      /* ignore */
+    }
+    return next;
+  }
   return "dark";
 }
 
 function applyResolved(resolved: Resolved) {
-  document.documentElement.dataset.theme = resolved;
-  document.documentElement.style.colorScheme = resolved;
-}
-
-function useSystemDarkFlag() {
-  const [dark, setDark] = useState(systemPrefersDark);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const handler = () => setDark(mq.matches);
-    handler();
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return dark;
+  const root = document.documentElement;
+  root.dataset.theme = resolved;
+  root.style.colorScheme = resolved;
+  root.classList.toggle("dark", resolved === "dark");
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) {
+    meta.setAttribute("content", resolved === "dark" ? "#000000" : "#ffffff");
+  }
 }
 
 type Ctx = {
@@ -53,13 +49,8 @@ const ThemeContext = createContext<Ctx | null>(null);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [preference, setPreferenceState] = useState<ThemePreference>(() => readInitialPreference());
-  const systemDark = useSystemDarkFlag();
 
-  const resolved: Resolved = useMemo(() => {
-    if (preference === "dark") return "dark";
-    if (preference === "light") return "light";
-    return systemDark ? "dark" : "light";
-  }, [preference, systemDark]);
+  const resolved: Resolved = preference;
 
   useEffect(() => {
     applyResolved(resolved);
@@ -75,9 +66,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const cyclePreference = useCallback(() => {
-    const order: ThemePreference[] = ["light", "dark", "system"];
-    const i = order.indexOf(preference);
-    setPreference(order[(i + 1) % order.length]);
+    setPreference(preference === "light" ? "dark" : "light");
   }, [preference, setPreference]);
 
   const value = useMemo(

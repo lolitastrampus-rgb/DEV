@@ -16,9 +16,7 @@ export function CasesSection() {
       variants={caseGridContainer}
       aria-label={t.directions.title}
     >
-      <h2 className="font-display text-center text-xs font-bold uppercase tracking-[0.2em] text-ink-muted">
-        {t.directions.kicker}
-      </h2>
+      <h2 className="font-display text-center text-xs font-bold uppercase tracking-[0.2em] text-ink-muted">{t.directions.kicker}</h2>
       <p className="font-display mx-auto mt-2 max-w-xl text-balance text-center text-lg font-bold text-ink sm:text-xl">
         {t.directions.title}
       </p>
@@ -45,9 +43,7 @@ export function CasesSection() {
                   </span>
                 </div>
                 <h3 className="font-display text-lg font-bold text-ink">{item.title}</h3>
-                <p className="font-display mt-2 flex-1 text-sm leading-relaxed text-ink-muted">
-                  {item.description}
-                </p>
+                <p className="font-display mt-2 flex-1 text-sm leading-relaxed text-ink-muted">{item.description}</p>
                 <ul className="mt-5 space-y-2 border-t border-[color:var(--card-border)] pt-5 font-display text-xs text-ink-muted">
                   {item.bullets.map((b) => (
                     <li key={b} className="flex gap-2">

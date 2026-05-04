@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
-body {
-  background-color: #000 !important;
-  color: #fff !important;
-}
+/* Класс `dark` на <html> (ThemeContext) — варианты `dark:` в компонентах, например Button */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: "Inter", "Roboto", ui-sans-serif, system-ui, sans-serif;
@@ -25,6 +23,18 @@ body {
   --panel-bg: rgba(255, 255, 255, 0.88);
   --panel-border: rgba(228, 228, 231, 0.92);
   --mesh-bg: #ffffff;
+}
+
+/* Явная светлая тема: контраст текста/фона при html[data-theme="light"] */
+html[data-theme="light"] {
+  --color-ink: #18181b;
+  --color-ink-muted: #52525b;
+  --color-surface: #fafafa;
+  --card-bg: rgba(255, 255, 255, 0.97);
+  --card-border: rgba(228, 228, 231, 0.98);
+  --panel-bg: rgba(255, 255, 255, 0.92);
+  --panel-border: rgba(212, 212, 216, 0.95);
+  --mesh-bg: #fafafa;
 }
 
 html[data-theme="dark"] {
@@ -153,6 +163,10 @@ html[data-theme="dark"] .aurora-base {
   filter: blur(70px);
   opacity: 1;
   animation: aurora-drift-d 44s ease-in-out infinite reverse;
+}
+
+html[data-theme="light"] .aurora-blob {
+  opacity: 0.5;
 }
 
 html[data-theme="dark"] .aurora-blob--purple {
@@ -317,60 +331,7 @@ html[data-theme="dark"] .text-vibrancy {
   text-transform: uppercase;
 }
 
-.btn-ultra {
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  text-shadow: none;
-  box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.12),
-    0 4px 24px rgba(56, 189, 248, 0.18),
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transition: box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;
-}
-.btn-ultra:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.55);
-  box-shadow:
-    0 0 0 1px rgba(56, 189, 248, 0.35),
-    0 6px 28px rgba(56, 189, 248, 0.28),
-    0 12px 40px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-
-.btn-glass-outline {
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(14px) saturate(1.15);
-  -webkit-backdrop-filter: blur(14px) saturate(1.15);
-  border: 1px solid rgba(42, 42, 46, 0.12);
-  color: var(--color-ink);
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 2px 12px rgba(0, 0, 0, 0.04);
-}
-.btn-glass-outline:hover {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(42, 42, 46, 0.18);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-}
-
-html[data-theme="dark"] .btn-glass-outline {
-  background: rgba(39, 39, 42, 0.55);
-  border: 1px solid rgba(82, 82, 91, 0.55);
-  color: var(--color-ink);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.04) inset,
-    0 2px 12px rgba(0, 0, 0, 0.35);
-}
-html[data-theme="dark"] .btn-glass-outline:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 0 24px rgba(56, 189, 248, 0.12);
-}
+/* CTA/герой/шапка: кнопки — компонент `src/components/Button.tsx` (dark: через класс на <html>) */
 
 .site-footer {
   border-top: 1px solid rgba(228, 228, 231, 0.95);
