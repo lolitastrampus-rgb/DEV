@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useLocale } from "../../context/LocaleContext";
 import { NAV_HREF } from "../../data/siteNav";
 import { mailtoHref } from "../../i18n";
@@ -12,9 +13,9 @@ export function LandingFooter() {
     <footer className="site-footer relative z-10 mt-auto border-t border-[color:var(--card-border)] backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between md:gap-12">
         <div>
-          <a href="#top" className="logo-brand text-sm font-bold text-ink">
+          <Link to="/" className="logo-brand text-sm font-bold text-ink">
             AI Agent Labs
-          </a>
+          </Link>
           <p className="font-display mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
             {t.footer.tagline}
           </p>
@@ -82,12 +83,30 @@ export function LandingFooter() {
           <p className="font-display text-xs font-bold uppercase tracking-wider text-ink-muted">
             {t.footer.legal}
           </p>
-          <a href="#" className="font-display text-sm text-ink-muted transition-colors hover:text-ink">
+          <Link
+            to="/audit-funnel"
+            className="font-display text-sm font-medium text-ink-muted transition-colors hover:text-ink"
+          >
+            {t.footer.funnelAudit}
+          </Link>
+          <Link
+            to="/privacy"
+            className="font-display text-sm text-ink-muted transition-colors hover:text-ink"
+          >
             {t.footer.privacy}
-          </a>
-          <a href="#" className="font-display text-sm text-ink-muted transition-colors hover:text-ink">
+          </Link>
+          <Link
+            to="/terms"
+            className="font-display text-sm text-ink-muted transition-colors hover:text-ink"
+          >
             {t.footer.terms}
-          </a>
+          </Link>
+          <Link
+            to="/security"
+            className="font-display text-sm text-ink-muted transition-colors hover:text-ink"
+          >
+            {t.footer.security}
+          </Link>
           <a
             href={mailtoHref(locale)}
             className="font-display text-sm font-medium text-[color:var(--color-ultra)] hover:underline"

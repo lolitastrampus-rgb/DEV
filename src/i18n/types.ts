@@ -4,6 +4,14 @@ export type ThemePreference = "light" | "dark";
 
 export type NavId = "modules" | "process" | "reviews" | "cases" | "cta";
 
+export type LegalStaticDocument = {
+  metaTitle: string;
+  heading: string;
+  updated: string;
+  intro: string;
+  sections: { title: string; paragraphs: string[] }[];
+};
+
 export type Messages = {
   meta: { title: string };
   nav: Record<NavId, string>;
@@ -13,6 +21,8 @@ export type Messages = {
     legal: string;
     privacy: string;
     terms: string;
+    security: string;
+    funnelAudit: string;
     contact: string;
     copyright: string;
     auditCta: string;
@@ -53,6 +63,23 @@ export type Messages = {
     p2: string;
     bullets: string[];
   };
+  economics: {
+    kicker: string;
+    title: string;
+    intro: string;
+    stats: { value: string; label: string; hint: string }[];
+    compareCaption: string;
+    compareCols: readonly [string, string];
+    compareRows: { before: string; after: string }[];
+  };
+  auditOffer: {
+    kicker: string;
+    title: string;
+    howToApply: string;
+    checklist: string[];
+    ctaHref: string;
+    cta: string;
+  };
   reviews: {
     kicker: string;
     title: string;
@@ -64,6 +91,8 @@ export type Messages = {
     items: {
       title: string;
       tag: string;
+      industry: string;
+      kpi: string;
       description: string;
       bullets: string[];
     }[];
@@ -75,6 +104,24 @@ export type Messages = {
     nextKicker: string;
     nextTitle: string;
     nextCta: string;
+  };
+  architecture: {
+    kicker: string;
+    title: string;
+    intro: string;
+    diagramAria: string;
+    stages: readonly [string, string, string, string];
+    ragLabel: string;
+    outboundLabel: string;
+    human: { title: string; body: string };
+    escalation: { title: string; body: string };
+  };
+  engineering: {
+    kicker: string;
+    title: string;
+    intro: string;
+    practices: { name: string; detail: string }[];
+    securityLink: string;
   };
   cta: {
     title: string;
@@ -89,4 +136,27 @@ export type Messages = {
   };
   mailtoSubject: string;
   mailtoAuditSubject: string;
+  legal: {
+    privacy: LegalStaticDocument;
+    terms: LegalStaticDocument;
+    security: LegalStaticDocument;
+  };
+  notFound: {
+    metaTitle: string;
+    title: string;
+    body: string;
+    homeCta: string;
+    auditCta: string;
+  };
+  auditFunnel: {
+    metaTitle: string;
+    badge: string;
+    title: string;
+    subtitle: string;
+    bullets: string[];
+    primaryCta: string;
+    secondaryCta: string;
+    footnote: string;
+    backHome: string;
+  };
 };

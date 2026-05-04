@@ -29,6 +29,15 @@
           root.classList.toggle("dark", resolved === "dark");
           var meta = document.querySelector('meta[name="theme-color"]');
           if (meta) meta.setAttribute("content", resolved === "dark" ? "#000000" : "#ffffff");
+          var locKey = "agentlab-locale";
+          var locale = localStorage.getItem(locKey);
+          var htmlLang = "ru";
+          if (locale === "en" || locale === "ru") {
+            htmlLang = locale;
+          } else if ((navigator.language || "").toLowerCase().startsWith("en")) {
+            htmlLang = "en";
+          }
+          document.documentElement.lang = htmlLang;
         } catch (e) {}
       })();
     </script>

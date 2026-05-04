@@ -42,8 +42,12 @@ export function CasesSection() {
                     {item.tag}
                   </span>
                 </div>
-                <h3 className="font-display text-lg font-bold text-ink">{item.title}</h3>
-                <p className="font-display mt-2 flex-1 text-sm leading-relaxed text-ink-muted">{item.description}</p>
+                <h3 className="font-display mt-3 text-lg font-bold text-ink">{item.title}</h3>
+                <p className="font-display mt-1 text-xs leading-relaxed text-ink-muted">{item.industry}</p>
+                <p className="font-display mt-3 w-fit rounded-full bg-[color-mix(in_srgb,var(--color-ultra)_16%,transparent)] px-3 py-1 text-xs font-semibold text-[color:var(--color-ultra-deep)] ring-1 ring-[color-mix(in_srgb,var(--color-ultra)_30%,transparent)] dark:text-[color:var(--color-ultra)]">
+                  {item.kpi}
+                </p>
+                <p className="font-display mt-3 flex-1 text-sm leading-relaxed text-ink-muted">{item.description}</p>
                 <ul className="mt-5 space-y-2 border-t border-[color:var(--card-border)] pt-5 font-display text-xs text-ink-muted">
                   {item.bullets.map((b) => (
                     <li key={b} className="flex gap-2">

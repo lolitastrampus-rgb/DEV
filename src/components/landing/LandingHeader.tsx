@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "../Button";
 import { useLocale } from "../../context/LocaleContext";
 import { NAV_HREF, NAV_ORDER } from "../../data/siteNav";
@@ -13,12 +14,12 @@ export function LandingHeader() {
         className="vision-glass flex w-full max-w-6xl items-center justify-between gap-2 rounded-2xl px-3 py-3 sm:gap-3 sm:px-5"
         aria-label="Основная навигация"
       >
-        <a
-          href="#top"
+        <Link
+          to="/"
           className="logo-brand shrink-0 text-xs font-bold text-ink sm:text-sm md:text-base"
         >
           AI Agent Labs
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-3 lg:gap-4 xl:flex">
           {NAV_ORDER.map((id) => (
